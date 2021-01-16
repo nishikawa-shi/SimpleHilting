@@ -1,10 +1,16 @@
 package com.ntetz.android.simplehilting
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.ntetz.android.simplehilting.model.IMainUtil
 import com.ntetz.android.simplehilting.ui.main.MainFragment
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+    @Inject
+    lateinit var util: IMainUtil
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -14,5 +20,6 @@ class MainActivity : AppCompatActivity() {
                     .replace(R.id.container, MainFragment.newInstance())
                     .commitNow()
         }
+        println("util result is ${util.getQueryStringValue("https://ntetz.com/?queryKeyName=queryKeyValueTet")}")
     }
 }
