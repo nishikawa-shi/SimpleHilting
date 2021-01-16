@@ -14,9 +14,6 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var util: IMainUtil
 
-    @Inject
-    lateinit var usecase: IMainUsecase
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
@@ -26,6 +23,5 @@ class MainActivity : AppCompatActivity() {
                     .commitNow()
         }
         println("util result is ${util.getQueryStringValue("https://ntetz.com/?queryKeyName=queryKeyValueTet")}")
-        println("usecase result is ${usecase.fetch()}")
     }
 }
